@@ -116,13 +116,16 @@ Alerts are separate automations that send a push notification.
 
 ## Screenshots
 
-| Dashboard | Daily briefing |
-|---|---|
-| ![Dashboard](screenshots/dashboard.png) | ![Briefing](screenshots/briefing.png) |
-
-| Evening check-in | Nutrition and training |
-|---|---|
-| ![Check-in](screenshots/checkin.png) | ![Nutrition](screenshots/nutrition.png) |
+<table>
+  <tr>
+    <td align="center" valign="top"><b>Dashboard</b><br><br><img src="screenshots/dashboard.png" width="360"></td>
+    <td align="center" valign="top"><b>Daily briefing</b><br><br><img src="screenshots/briefing.png" width="360"></td>
+  </tr>
+  <tr>
+    <td align="center" valign="top"><b>Evening check-in</b><br><br><img src="screenshots/checkin.png" width="360"></td>
+    <td align="center" valign="top"><b>Nutrition and training</b><br><br><img src="screenshots/nutrition.png" width="360"></td>
+  </tr>
+</table>
 
 ## Architecture
 
