@@ -120,21 +120,9 @@ Alerts are separate automations that send a push notification.
 |---|---|
 | ![Dashboard](screenshots/dashboard.png) | ![Briefing](screenshots/briefing.png) |
 
-| Coach chat | Evening check-in |
+| Evening check-in | Nutrition and training |
 |---|---|
-| ![Chat](screenshots/chat.png) | ![Check-in](screenshots/checkin.png) |
-
-| Nutrition | Hydration |
-|---|---|
-| ![Nutrition](screenshots/nutrition.png) | ![Hydration](screenshots/hydration.png) |
-
-| Body tracking | Physique analysis |
-|---|---|
-| ![Body](screenshots/body.png) | ![Physique](screenshots/physique.png) |
-
-| Pulse Score detail | Weekly review |
-|---|---|
-| ![Score](screenshots/score.png) | ![Weekly](screenshots/weekly.png) |
+| ![Check-in](screenshots/checkin.png) | ![Nutrition](screenshots/nutrition.png) |
 
 ## Architecture
 
