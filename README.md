@@ -6,9 +6,9 @@ It is built around one idea: **a coach should remember, build on what worked, an
 
 ## How a day works
 
-**Morning, automatic.** A scheduled script pulls last night's data from Garmin Connect and triggers the briefing workflow. The coach reads sleep, recovery, yesterday's training, meals and hydration, the weather, today's calendar and last night's check-in. It produces a spoken briefing with a state analysis, one concrete training and nutrition recommendation, one CBT technique, a stoic quote and a track suggested for the day. A push notification tells you it is ready.
+**Morning, automatic.** A scheduled script pulls last night's data from Garmin Connect and triggers the briefing workflow. The coach reads sleep, recovery, yesterday's training, meals and hydration, the weather, today's calendar and last night's check-in. It produces a spoken briefing with a state analysis, one concrete training and nutrition recommendation, one CBT technique, a stoic quote and a track suggested for the day. A push notification delivers the day's Pulse Score.
 
-**During the day.** Photograph a meal to log it, tap a bottle to log water, log a training session, weigh in, log your mood in real time, or talk to the coach by text or voice. Alerts fire if something drifts.
+**During the day.** Photograph a meal or describe it to the coach, tap a bottle to log water, log a training session, weigh in, log your mood in real time, or talk to the coach by text or voice. Alerts fire if something drifts.
 
 **Evening.** A push reminder opens a short check-in. The coach uses it tomorrow.
 
@@ -52,8 +52,9 @@ Collected daily: sleep duration, deep and REM sleep, sleep score, SpO2, sleep st
 - Takes into account whether the previous day's CBT technique was tried, and builds on it.
 - Narrated with text-to-speech. The player has a seek bar, duration, a live waveform on the actual audio, a full-text view and sharing.
 
-### Meal tracking by photo
-- Take a photo of a meal: GPT-4o vision identifies the dish and returns calories, macros and micronutrients (vitamin C, vitamin D, iron, magnesium), plus a quality rating.
+### Meal tracking by photo or by chat
+- **By photo:** take a picture of a meal. GPT-4o vision identifies the dish and returns calories, macros and micronutrients (vitamin C, vitamin D, iron, magnesium), plus a quality rating.
+- **By chat:** describe what you ate to the coach, in text or by voice. It estimates the nutrition and logs the meal.
 - A dedicated nutrition page shows an animated calorie ring, macro and micronutrient bars, per-meal cards with expandable detail and a date navigator. Meals can be deleted with a two-step confirmation.
 - Yesterday's totals feed the Pulse Score and the next briefing.
 
@@ -94,6 +95,7 @@ Each night, durable facts are extracted from the day's check-in and filed as goa
 - Speak to the coach, get the answer spoken back, or type.
 - Speech-to-text with Whisper, a live level meter while recording, replay on each answer.
 - The agent has access to the user's data through tools: biometrics, Pulse Scores, nutrition, check-ins and training sessions, plus the profile and a conversation memory.
+- Meals described in the conversation are logged to the nutrition table.
 - For emotional difficulty, the coach deliberately slows down: one question, then a reflection and a deeper question, then naming the thinking pattern, then reframing, then one small action. It does not solve everything in a single reply.
 
 ### Alerts
@@ -102,7 +104,7 @@ Alerts are separate automations that send a push notification.
 - **Anomaly detection.** Runs daily and only notifies when something is really wrong, not on a bad day. Three signals are watched: overnight HRV, resting heart rate and body battery. Thresholds are derived from the user's own 30-day baseline, and an alert requires the threshold to be crossed **two days in a row**. The message shows the trajectory (yesterday's value, then today's).
 - **Hydration alert.** In the afternoon, the workflow checks the day's logged water. If it is below 1,500 ml, a notification is sent while there is still time to catch up.
 - **Evening check-in reminder.**
-- **Briefing ready**, with the Pulse Score in the notification.
+- **Daily score notification**, sent each morning with the Pulse Score.
 
 ### Weekly review
 - A 20-screen questionnaire: short-form PHQ and GAD items, positive-affect questions, what was hardest, what worked, an overall rating, the perceived usefulness of CBT techniques, and the user's own goals for the coming week.
@@ -159,6 +161,18 @@ Alerts are separate automations that send a push notification.
 | Hydration alert | Afternoon | Push notification if intake is under 1,500 ml |
 | Anomaly detection | Daily | Push notification after two consecutive days of abnormal biometrics |
 | Weekly review | Questionnaire submitted | Aggregates the period, writes, narrates and stores the review |
+
+## Workflows
+
+The whole product runs on n8n. Each screenshot shows one workflow's canvas.
+
+| Daily briefing (part 1) | Daily briefing (part 2) |
+|---|---|
+| ![Daily 1](screenshots/workflow-daily-1.png) | ![Daily 2](screenshots/workflow-daily-2.png) |
+
+| Interaction (chat, photos) |
+|---|
+| ![Interaction](screenshots/workflow-interaction.png) |
 
 ## Design decisions
 
