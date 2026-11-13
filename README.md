@@ -50,7 +50,8 @@ Collected daily: sleep duration, deep and REM sleep, sleep score, SpO2, sleep st
 - Includes a **stoic quote** and a **track recommendation** chosen from four moods (deep focus, recovery, energy, meditative), with a memory of recent picks so it does not repeat itself.
 - Reads today's **Google Calendar** events and the **weather**.
 - Takes into account whether the previous day's CBT technique was tried, and builds on it.
-- Narrated with text-to-speech. The player has a seek bar, duration, a live waveform on the actual audio, a full-text view and sharing.
+- Narrated with Cartesia Sonic text-to-speech. The player has a seek bar, duration, a live waveform on the actual audio, a full-text view and sharing.
+- When the day's briefing is ready, a small gold "new" badge appears on the dashboard. Tapping it scrolls to the briefing and starts playback; it disappears once the briefing has been played and comes back with the next one.
 
 ### Meal tracking by photo or by chat
 - **By photo:** take a picture of a meal. GPT-4o vision identifies the dish and returns calories, macros and micronutrients (vitamin C, vitamin D, iron, magnesium), plus a quality rating.
@@ -92,7 +93,7 @@ The coach proposes one technique in the morning. The evening check-in asks wheth
 Each night, durable facts are extracted from the day's check-in and filed as goals, blockers, decisions, techniques or context. Duplicates are merged and a counter tracks how often something comes back. The briefing and the chat both read this memory, so the coach can refer to something you said weeks ago.
 
 ### Voice chat
-- Speak to the coach, get the answer spoken back, or type.
+- Speak to the coach, get the answer spoken back with the same Cartesia voice as the briefings, or type.
 - Speech-to-text with Whisper, a live level meter while recording, replay on each answer.
 - The agent has access to the user's data through tools: biometrics, Pulse Scores, nutrition, check-ins and training sessions, plus the profile and a conversation memory.
 - Meals described in the conversation are logged to the nutrition table.
@@ -111,7 +112,9 @@ Alerts are separate automations that send a push notification.
 - The review window is rolling: it starts where the previous review ended.
 - The coach aggregates sleep, HRV, stress, training, nutrition, hydration, Pulse Score trajectory, the CBT techniques proposed during the period, and every evening check-in.
 - It writes a structured review: Pulse Score, sleep and recovery, training, nutrition and hydration, emotional trajectory, psychological state compared to the onboarding baseline, CBT techniques of the week, last week's goals (met or missed, judged from the data), the goals the user wrote, and a stoic reflection.
-- It is narrated, stored, shared as a web page with an audio player, and announced by email.
+- It is narrated with Cartesia, stored, shared as a web page with an audio player, and announced by email. The audio duration is shown before playback starts.
+- A summary card on the dashboard shows the latest review: the period, the user's own rating out of 10, and three scores out of 12 (wellbeing, low mood, anxiety). Each score is colour-coded on a simple personal scale: low mood and anxiety 0-3 good, 4-6 watch, 7-12 hard; wellbeing 9-12 very good, 5-8 fair, 0-4 low. The scale is a personal guide for tracking weeks, not a clinical threshold.
+- When a new review is ready, a small navy and gold "new" badge floats on the dashboard until the review has been opened.
 - The most useful signal is the gap between three sources: what the body registered (Garmin), how the days felt (check-ins) and the user's own judgement of the week.
 
 ## Screenshots
@@ -133,7 +136,7 @@ Alerts are separate automations that send a push notification.
 |---|---|
 | Orchestration | n8n, self-hosted |
 | Language model | OpenAI GPT-4o (briefings, chat, reviews), GPT-4o-mini (memory extraction), GPT-4o vision (meal and physique photos) |
-| Voice | OpenAI Whisper for speech-to-text, OpenAI text-to-speech for narration |
+| Voice | OpenAI Whisper for speech-to-text, Cartesia Sonic for narration (daily briefing, weekly review, chat) |
 | Database | Supabase: Postgres, vector stores, file storage for audio |
 | Frontend | Next.js, TypeScript, App Router, installable as a PWA, PIN-protected, deployed on Vercel |
 | Health data | Garmin Connect, collected by a Python script run daily by a server cron job |
